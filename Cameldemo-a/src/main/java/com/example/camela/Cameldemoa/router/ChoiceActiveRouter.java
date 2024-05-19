@@ -19,8 +19,13 @@ public class ChoiceActiveRouter extends RouteBuilder {
                     .otherwise()
                         .log("not a XML file")
                 .end()
-                .log("${body}")
+                .to("direct://log-file-values")
                 .to("file:files/output");
+
+
+
+        from("direct:log-file-values")
+                .log("${messageHistory} ${file:absolute.path } ");
 
     }
 }
