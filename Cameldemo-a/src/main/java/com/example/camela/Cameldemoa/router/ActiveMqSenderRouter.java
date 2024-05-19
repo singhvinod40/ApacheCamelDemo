@@ -3,7 +3,7 @@ package com.example.camela.Cameldemoa.router;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class ActiveMqSenderRouter extends RouteBuilder {
 
 
@@ -20,10 +20,19 @@ public class ActiveMqSenderRouter extends RouteBuilder {
 //    }
 
 //send JSON message to MQ
+//    @Override
+//    public void configure() throws Exception {
+//
+//        from("file:src/main/resources/files/json")
+//                .log("${body}")
+//                .to("activemq:my-activemq-queue");
+//    }
+
+    //active -mq  xml sender
     @Override
     public void configure() throws Exception {
 
-        from("file:src/main/resources/files/json")
+        from("file:src/main/resources/files/xml")
                 .log("${body}")
                 .to("activemq:my-activemq-queue");
     }
